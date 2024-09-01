@@ -8,7 +8,7 @@ class Button;
 class GameWindow : public Window
 {
 public:
-	GameWindow(const unsigned int& width, const unsigned int& height, std::string& window_title = std::string(""));
+	GameWindow(const unsigned int& width, const unsigned int& height, const std::string& window_title = std::string(""));
 	virtual void processSelfEvent(CallbackEvent* event) override;
 
 private:

@@ -5,7 +5,7 @@
 #include "memory"
 #include "string"
 #include "SDL_stdinc.h"
-#include "SDL_Rect.h"
+#include "SDL_rect.h"
 
 class SDL_Window;
 class SDL_Renderer;
@@ -16,7 +16,7 @@ class CallbackEvent;
 class Window
 {
 public:
-	Window(const unsigned int& width, const unsigned int& height, std::string& window_title = std::string(""));
+	Window(const unsigned int& width, const unsigned int& height, const std::string& window_title = std::string(""));
 	virtual ~Window();
 	void addObject(Object* _new_object);
 	void removeObject(Object* object);

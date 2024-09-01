@@ -2,6 +2,7 @@
 #define FPSEVENT_H
 
 #include "event.h"
+#include "cstddef"
 
 class FpsEvent : public Event
 {

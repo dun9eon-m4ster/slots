@@ -5,7 +5,7 @@
 #include "barrel.h"
 #include "fpswidget.h"
 
-GameWindow::GameWindow(const unsigned int& width, const unsigned int& height, std::string& window_title)
+GameWindow::GameWindow(const unsigned int& width, const unsigned int& height, const std::string& window_title)
 	:	Window(width, height, window_title),
 		button(new Button(Rect(500, 700, 200, 50)))
 {

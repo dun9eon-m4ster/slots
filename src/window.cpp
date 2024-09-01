@@ -10,7 +10,7 @@
 #include "texture.h"
 #include "texturemanager.h"
 
-Window::Window(const unsigned int& width, const unsigned int& height, std::string& window_title)
+Window::Window(const unsigned int& width, const unsigned int& height, const std::string& window_title)
 {
 	_rect.x = 0;
 	_rect.y = 0;
