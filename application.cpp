@@ -6,42 +6,18 @@
 #include "event.h"
 #include "object.h"
 #include "rect.h"
-
-
-class GraphicsObject : public Object
-{
-public:
-    GraphicsObject(const Rect& _new_rect)
-        : _rect(_new_rect)
-    {}
-
-    virtual void handleEvent(Event* event)
-    {
-        if (auto mouse_move_event = dynamic_cast<MouseMoveEvent*>(event))
-        {
-            if(_rect.contains(mouse_move_event->pos()))
-                mouseMoveEvent(mouse_move_event);
-        }  
-    }
-
-protected:
-    virtual void mouseMoveEvent(MouseMoveEvent *event)
-    {
-        std::cout << "GraphicsObject::mouseMoveEvent(" << event->pos().x() << "," << event->pos().y() << ")" << std::endl;
-    }
-
-private:
-    Rect _rect;
-};
-
-
+#include "mouseevent.h"
+#include "chrono"
+#include "callbackevent.h"
+#include "SDL_timer.h"
+#include "texturemanager.h"
+#include "fpsevent.h"
 
 
 Application::Application()
     :   application_state(State::Waiting),
-        application_window(new Window(1000, 800))
+        application_window(nullptr)
 {
-    application_window->addObject(new GraphicsObject(Rect(200, 200, 50, 50)));
 }
 
 int Application::exec()
@@ -53,6 +29,11 @@ int Application::exec()
 	return mainEventLoop();
 }
 
+void Application::setApplicationWindow(Window* _new_window)
+{
+    application_window = std::shared_ptr<Window>(_new_window);
+}
+
 int Application::init()
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -60,6 +41,9 @@ int Application::init()
         printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
         return -1;
     }
+
+    TextureManager::instance();
+
     return 0;
 }
 
@@ -79,8 +63,6 @@ void Application::processEvents()
     SDL_Event sdl_event;
     while (SDL_PollEvent(&sdl_event))
     {
-        std::shared_ptr<Event> event(nullptr);
-
         auto type = sdl_event.type;
 
         if      (type == SDL_EventType::SDL_QUIT)
@@ -104,10 +86,40 @@ void Application::processEvents()
                                                         mouseButtonFromSDL(sdl_event.button.which));
             application_window->notify(&_new_mouse_release_event);
         }
+        else if (type == SDL_EventType::SDL_USEREVENT)
+        {
+            auto _new_custom_event = static_cast<Event*>(sdl_event.user.data1);
+
+            if      (auto callback_event = dynamic_cast<CallbackEvent*>(_new_custom_event))
+                application_window->processSelfEvent(callback_event);
+            else
+                application_window->notify(_new_custom_event);
+            
+            delete _new_custom_event;
+        }
     }
 }
 
 void Application::processRender()
 {
+    static auto time = SDL_GetTicks();
+    static int counter = 0;
+    counter++;
 
+    auto current_time = SDL_GetTicks();
+    auto msecs_elapsed = current_time - time;
+    if (msecs_elapsed >= 1000)
+    {
+        SDL_Event _new_event;
+        _new_event.type = SDL_EventType::SDL_USEREVENT;
+        _new_event.user.timestamp = SDL_GetTicks();
+        _new_event.user.data1 = new FpsEvent(counter);
+        SDL_PushEvent(&_new_event);
+
+        std::cout << "fps: " << counter << std::endl;
+        time = current_time;
+        counter = 0;
+    }
+
+    application_window->redraw();
 }

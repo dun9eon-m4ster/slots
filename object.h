@@ -1,7 +1,11 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
+#include "vector"
+
 class Event;
+class CallbackEvent;
+
 
 class Object
 {

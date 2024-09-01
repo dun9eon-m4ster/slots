@@ -8,7 +8,21 @@ add_executable(${PROJECT_NAME}  main.cpp
                                 event.cpp 
                                 point.cpp
                                 rect.cpp
-                                object.cpp)
+                                object.cpp
+                                paintevent.cpp
+                                mouseevent.cpp
+                                graphicsobject.cpp
+                                interactiveobject.cpp
+                                painter.cpp
+                                button.cpp
+                                barrel.cpp
+                                callbackevent.cpp
+                                buttonclickevent.cpp
+                                gamewindow.cpp
+                                fpswidget.cpp
+                                texture.cpp
+                                texturemanager.cpp
+                                fpsevent.cpp)
 
 add_subdirectory(lib/SDL2)
 

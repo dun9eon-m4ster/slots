@@ -16,8 +16,8 @@ class Application
 
 public:
 	Application();
-
 	int exec();
+	void setApplicationWindow(Window* _new_window);
 
 private:
 	int init();
