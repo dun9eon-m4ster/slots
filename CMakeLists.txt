@@ -2,27 +2,27 @@ cmake_minimum_required(VERSION 2.8)
 
 set(PROJECT_NAME slots)
 project(${PROJECT_NAME})
-add_executable(${PROJECT_NAME}  main.cpp 
-                                application.cpp 
-                                window.cpp 
-                                event.cpp 
-                                point.cpp
-                                rect.cpp
-                                object.cpp
-                                paintevent.cpp
-                                mouseevent.cpp
-                                graphicsobject.cpp
-                                interactiveobject.cpp
-                                painter.cpp
-                                button.cpp
-                                barrel.cpp
-                                callbackevent.cpp
-                                buttonclickevent.cpp
-                                gamewindow.cpp
-                                fpswidget.cpp
-                                texture.cpp
-                                texturemanager.cpp
-                                fpsevent.cpp)
+add_executable(${PROJECT_NAME}  src/main.cpp 
+                                src/application.cpp 
+                                src/window.cpp 
+                                src/event.cpp 
+                                src/point.cpp
+                                src/rect.cpp
+                                src/object.cpp
+                                src/paintevent.cpp
+                                src/mouseevent.cpp
+                                src/graphicsobject.cpp
+                                src/interactiveobject.cpp
+                                src/painter.cpp
+                                src/button.cpp
+                                src/barrel.cpp
+                                src/callbackevent.cpp
+                                src/buttonclickevent.cpp
+                                src/gamewindow.cpp
+                                src/fpswidget.cpp
+                                src/texture.cpp
+                                src/texturemanager.cpp
+                                src/fpsevent.cpp)
 
 add_subdirectory(lib/SDL2)
 
