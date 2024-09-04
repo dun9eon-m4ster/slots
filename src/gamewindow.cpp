@@ -18,7 +18,7 @@ GameWindow::GameWindow(const unsigned int& width, const unsigned int& height, co
     int element_width = 200;
     int element_height = 600;
 
-    for (Uint16 i = 0; i < 5; i++)
+    for (Uint16 i = 0; i < 1; i++)
     {
         addObject(new Barrel(Rect(  padding_left + i * spacing + i * element_width,
                                     padding_top,
@@ -33,7 +33,7 @@ void GameWindow::processSelfEvent(CallbackEvent* event)
 	{
 		if (button != nullptr && button == button_click_event->caller())
 		{
-			std::cout << "button_press" << std::endl;
+            notify(button_click_event);
 		}
 	}
 }

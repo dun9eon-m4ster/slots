@@ -22,7 +22,8 @@ add_executable(${PROJECT_NAME}  src/main.cpp
                                 src/fpswidget.cpp
                                 src/texture.cpp
                                 src/texturemanager.cpp
-                                src/fpsevent.cpp)
+                                src/fpsevent.cpp
+                                src/animation.cpp)
 
 add_subdirectory(lib/SDL2)
 
