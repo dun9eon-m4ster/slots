@@ -78,4 +78,9 @@ void Painter::clear()
 	SDL_RenderClear(sdl_renderer);
 }
 
+SDL_Renderer* Painter::sdlRenderer()
+{
+	return sdl_renderer;
+}
+
 

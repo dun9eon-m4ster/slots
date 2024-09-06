@@ -18,7 +18,7 @@ enum class Color
 };
 
 class Texture;
-class SDL_Renderer;
+struct SDL_Renderer;
 
 class Painter
 {
@@ -31,6 +31,7 @@ public:
 	void drawLine(const int x1, const int y1, const int x2, const int y2);
 	void drawTexture(std::shared_ptr<Texture> texture, const Rect& dist, const Rect &src = Rect());
 	void clear();
+	SDL_Renderer* sdlRenderer();
 
 private:
 	SDL_Renderer *sdl_renderer;

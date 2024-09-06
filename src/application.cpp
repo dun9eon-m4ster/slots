@@ -36,7 +36,7 @@ void Application::setApplicationWindow(Window* _new_window)
 
 int Application::init()
 {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
     {
         printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
         return -1;
@@ -116,7 +116,6 @@ void Application::processRender()
         _new_event.user.data1 = new FpsEvent(counter);
         SDL_PushEvent(&_new_event);
 
-        std::cout << "fps: " << counter << std::endl;
         time = current_time;
         counter = 0;
     }
