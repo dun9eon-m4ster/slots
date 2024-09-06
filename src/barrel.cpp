@@ -116,13 +116,8 @@ void Barrel::paintEvent(PaintEvent* event)
 
 
 	uint32_t offset = animation.currentValue();
-	if (!animation.isRunning())
-		offset %= rect().height() / 3;
-
 
 	SDL_SetRenderTarget(sdl_renderer, NULL);
-
-
 
 	if (offset == 0)
 	{

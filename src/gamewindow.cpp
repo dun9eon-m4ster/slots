@@ -31,17 +31,11 @@ GameWindow::GameWindow(const unsigned int& width, const unsigned int& height, co
     int element_height = 600;
 
     std::vector<BarrelInit> init_data;
-    //init_data.push_back(BarrelInit(30, 4000));
-    //init_data.push_back(BarrelInit(60, 4250));
-    //init_data.push_back(BarrelInit(50, 4500));
-    //init_data.push_back(BarrelInit(30, 4750));
-    //init_data.push_back(BarrelInit(70, 5000));
-
-    init_data.push_back(BarrelInit(10, 4000));
-    init_data.push_back(BarrelInit(10, 4250));
-    init_data.push_back(BarrelInit(10, 4500));
-    init_data.push_back(BarrelInit(10, 4750));
-    init_data.push_back(BarrelInit(10, 5000));
+    init_data.push_back(BarrelInit(30, 4000));
+    init_data.push_back(BarrelInit(60, 4250));
+    init_data.push_back(BarrelInit(50, 4500));
+    init_data.push_back(BarrelInit(30, 4750));
+    init_data.push_back(BarrelInit(70, 5000));
 
     for (Uint16 i = 0; i < init_data.size(); i++)
     {
