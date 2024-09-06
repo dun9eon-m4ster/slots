@@ -10,8 +10,6 @@
 
 uint32_t callback(uint32_t interval, void* data)
 {
-    std::cout << "callback()" << std::endl;
-
     auto pimpl = static_cast<Pimpl*>(data);
 
     pimpl->current_value += pimpl->speed;
@@ -59,8 +57,11 @@ uint32_t Animation::currentValue() const
 
 void Animation::start(const uint32_t& duration)
 {
-    pimpl->is_running = true;
+    if (pimpl->is_running)
+        return;
 
+    pimpl->is_running = true;
+    pimpl->current_value = pimpl->start_value;
     pimpl->end_time = SDL_GetTicks() + duration;
     SDL_AddTimer(pimpl->tick, callback, pimpl);
 }

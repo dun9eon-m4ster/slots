@@ -7,8 +7,8 @@
 #include "SDL_stdinc.h"
 #include "SDL_rect.h"
 
-class SDL_Window;
-class SDL_Renderer;
+struct SDL_Window;
+struct SDL_Renderer;
 class Object;
 class Event;
 class CallbackEvent;

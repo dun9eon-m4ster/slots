@@ -16,9 +16,10 @@ class Barrel : public GraphicsObject
 	};
 
 public:
-	Barrel(const Rect& _new_rect);
+	Barrel(const Rect& _new_rect, const uint32_t& _new_spinning_speed, const uint32_t& _new_duration);
 	//void setSpeed();
 	//void setDuration();
+	bool isSpinning() const;
 	void start();
 	virtual void handleEvent(Event *event) override;
 
@@ -28,6 +29,8 @@ protected:
 private:
 	State _state;
 	Animation animation;
+	uint32_t spinning_speed;
+	uint32_t duration;
 };
 
 #endif // BARREL_H
